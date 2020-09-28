@@ -31,9 +31,9 @@
   #include "wx/wx.h"
 #endif //precompiled headers
 
-#include "DR_pi.h"
-#include "DRgui_impl.h"
-#include "DRgui.h"
+#include "Burton_pi.h"
+#include "Burtongui_impl.h"
+#include "Burtongui.h"
 
 #include "version.h"
 #include "wxWTranslateCatalog.h"
@@ -43,7 +43,7 @@
 
 extern "C" DECL_EXP opencpn_plugin* create_pi(void *ppimgr)
 {
-    return new DR_pi(ppimgr);
+    return new Burton_pi(ppimgr);
 }
 
 extern "C" DECL_EXP void destroy_pi(opencpn_plugin* p)
@@ -65,7 +65,7 @@ extern "C" DECL_EXP void destroy_pi(opencpn_plugin* p)
 //
 //---------------------------------------------------------------------------------------------------------
 
-DR_pi::DR_pi(void *ppimgr)
+Burton_pi::Burton_pi(void *ppimgr)
       :opencpn_plugin_116 (ppimgr)
 {
       // Create the PlugIn icons
@@ -74,10 +74,10 @@ DR_pi::DR_pi(void *ppimgr)
 	  wxFileName fn;
 	  wxString tmp_path;
 
-	  tmp_path = GetPluginDataDir("dr_pi");
+	  tmp_path = GetPluginDataDir("burton_pi");
 	  fn.SetPath(tmp_path);
 	  fn.AppendDir(_T("data"));
-	  fn.SetFullName("dr_pi_panel_icon.png");
+	  fn.SetFullName("burton_pi_panel_icon.png");
 
 	  wxString shareLocn = fn.GetFullPath();
 	  wxImage panelIcon(shareLocn);
@@ -85,20 +85,20 @@ DR_pi::DR_pi(void *ppimgr)
 	  if (panelIcon.IsOk())
 		  m_panelBitmap = wxBitmap(panelIcon);
 	  else
-		  wxLogMessage(_T("    DR_pi panel icon NOT loaded"));
+		  wxLogMessage(_T("    Burton_pi panel icon NOT loaded"));
 	  m_bShowDR = false;
 }
 
-DR_pi::~DR_pi(void)
+Burton_pi::~Burton_pi(void)
 {
-     delete _img_DR_pi;
+     delete _img_Burton_pi;
      delete _img_DR;
      
 }
 
-int DR_pi::Init(void)
+int Burton_pi::Init(void)
 {
-      AddLocaleCatalog( _T("opencpn-DR_pi") );
+      AddLocaleCatalog( _T("opencpn-Burton_pi") );
 
       // Set some default private member parameters
       m_route_dialog_x = 0;
@@ -141,7 +141,7 @@ int DR_pi::Init(void)
            );
 }
 
-bool DR_pi::DeInit(void)
+bool Burton_pi::DeInit(void)
 {
       //    Record the dialog position
       if (NULL != m_pDialog)
@@ -166,54 +166,54 @@ bool DR_pi::DeInit(void)
     return true;
 }
 
-int DR_pi::GetAPIVersionMajor()
+int Burton_pi::GetAPIVersionMajor()
 {
       return OCPN_API_VERSION_MAJOR;
 }
 
-int DR_pi::GetAPIVersionMinor()
+int Burton_pi::GetAPIVersionMinor()
 {
       return OCPN_API_VERSION_MINOR;
 }
 
-int DR_pi::GetPlugInVersionMajor()
+int Burton_pi::GetPlugInVersionMajor()
 {
       return PLUGIN_VERSION_MAJOR;
 }
 
-int DR_pi::GetPlugInVersionMinor()
+int Burton_pi::GetPlugInVersionMinor()
 {
       return PLUGIN_VERSION_MINOR;
 }
 
-wxBitmap *DR_pi::GetPlugInBitmap()
+wxBitmap *Burton_pi::GetPlugInBitmap()
 {
       return &m_panelBitmap;
 }
 
-wxString DR_pi::GetCommonName()
+wxString Burton_pi::GetCommonName()
 {
       return _("DR");
 }
 
 
-wxString DR_pi::GetShortDescription()
+wxString Burton_pi::GetShortDescription()
 {
       return _("DR Positions using GPX files");
 }
 
-wxString DR_pi::GetLongDescription()
+wxString Burton_pi::GetLongDescription()
 {
       return _("Creates GPX files with\n\
 DR Positions");
 }
 
-int DR_pi::GetToolbarToolCount(void)
+int Burton_pi::GetToolbarToolCount(void)
 {
       return 1;
 }
 
-void DR_pi::SetColorScheme(PI_ColorScheme cs)
+void Burton_pi::SetColorScheme(PI_ColorScheme cs)
 {
       if (NULL == m_pDialog)
             return;
@@ -221,7 +221,7 @@ void DR_pi::SetColorScheme(PI_ColorScheme cs)
       DimeWindow(m_pDialog);
 }
 
-void DR_pi::OnToolbarToolCallback(int id)
+void Burton_pi::OnToolbarToolCallback(int id)
 {
     
 	if(NULL == m_pDialog)
@@ -247,13 +247,13 @@ void DR_pi::OnToolbarToolCallback(int id)
       RequestRefresh(m_parent_window); // refresh main window
 }
 
-bool DR_pi::LoadConfig(void)
+bool Burton_pi::LoadConfig(void)
 {
       wxFileConfig *pConf = (wxFileConfig *)m_pconfig;
 
       if(pConf)
       {
-            pConf->SetPath ( _T( "/Settings/DR_pi" ) );
+            pConf->SetPath ( _T( "/Settings/Burton_pi" ) );
 			 pConf->Read ( _T( "ShowDRIcon" ), &m_bDRShowIcon, 1 );
            
             m_route_dialog_x =  pConf->Read ( _T ( "DialogPosX" ), 20L );
@@ -269,13 +269,13 @@ bool DR_pi::LoadConfig(void)
             return false;
 }
 
-bool DR_pi::SaveConfig(void)
+bool Burton_pi::SaveConfig(void)
 {
       wxFileConfig *pConf = (wxFileConfig *)m_pconfig;
 
       if(pConf)
       {
-            pConf->SetPath ( _T ( "/Settings/DR_pi" ) );
+            pConf->SetPath ( _T ( "/Settings/Burton_pi" ) );
 			pConf->Write ( _T ( "ShowDRIcon" ), m_bDRShowIcon );
           
             pConf->Write ( _T ( "DialogPosX" ),   m_route_dialog_x );
@@ -287,7 +287,7 @@ bool DR_pi::SaveConfig(void)
             return false;
 }
 
-void DR_pi::OnDRDialogClose()
+void Burton_pi::OnDRDialogClose()
 {
     m_bShowDR = false;
     SetToolbarItemState( m_leftclick_tool_id, m_bShowDR );

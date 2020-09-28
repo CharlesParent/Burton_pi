@@ -25,9 +25,9 @@
  ***************************************************************************
  */
 
-#include "DRgui_impl.h"
-#include "DRgui.h"
-#include "DR_pi.h"
+#include "Burtongui_impl.h"
+#include "Burtongui.h"
+#include "Burton_pi.h"
 #include "icons.h"
 
 #include <wx/progdlg.h>
@@ -39,7 +39,7 @@
 
 #define FAIL(X) do { error = X; goto failed; } while(0)
 
-Dlg::Dlg(wxWindow *parent, DR_pi *ppi)
+Dlg::Dlg(wxWindow *parent, Burton_pi *ppi)
 	: m_Dialog(parent)
 {
 	this->Fit();
@@ -49,7 +49,7 @@ Dlg::Dlg(wxWindow *parent, DR_pi *ppi)
 	pParent = parent;
 
 	wxString blank_name = *GetpSharedDataLocation()
-		+ _T("plugins/DR_pi/data/blank.ico");
+		+ _T("plugins/Burton_pi/data/blank.ico");
 
 	wxIcon icon(blank_name, wxBITMAP_TYPE_ICO);
 	SetIcon(icon);
@@ -242,7 +242,7 @@ void Dlg::Calculate( wxCommandEvent& event, bool write_file, int Pattern  ){
     if (write_file){
         doc.LinkEndChild( root );
         root->SetAttribute("version", "0.1");
-        root->SetAttribute("creator", "DR_pi by Rasbats");
+        root->SetAttribute("creator", "Burton_pi by Rasbats");
         root->SetAttribute("xmlns:xsi", "http://www.w3.org/2001/XMLSchema-instance");
         root->SetAttribute("xmlns:gpxx","http://www.garmin.com/xmlschemas/GpxExtensions/v3" );
         root->SetAttribute("xsi:schemaLocation", "http://www.topografix.com/GPX/1/1 http://www.topografix.com/GPX/1/1/gpx.xsd");

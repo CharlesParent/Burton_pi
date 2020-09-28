@@ -29,11 +29,11 @@ endif(COMMAND cmake_policy)
 
 # define plugin name, owner and versions
 
-SET(VERBOSE_NAME "DR_pi")
-SET(COMMON_NAME "DR")
-SET(TITLE_NAME "DR")
-SET(PACKAGE_CONTACT "Rasbats")
-SET(PACKAGE "dr")
+SET(VERBOSE_NAME "Burton_pi")
+SET(COMMON_NAME "Burton")
+SET(TITLE_NAME "Burton")
+SET(PACKAGE_CONTACT "Charles PARENT")
+SET(PACKAGE "burton")
 
 SET(VERSION_MAJOR "3")
 SET(VERSION_MINOR "1")
@@ -64,7 +64,7 @@ set(ALPHA "alpha") # Standard Repos
 
 set(CLOUDSMITH_USER "opencpn")
 # set this if your cloudsmith repository name does not match your git repository name set(CLOUDSMITH_BASE_REPOSITORY "sar")
-set(CLOUDSMITH_BASE_REPOSITORY "dr")
+set(CLOUDSMITH_BASE_REPOSITORY "burton")
 
 set(XML_INFO_URL "https://opencpn.org/wiki/dokuwiki/doku.php?id=opencpn:opencpn_user_manual:plugins:navigation:dead_reckoning")
 set(XML_SUMMARY "Plugin to make GPX files for dead reckoning positions")
@@ -131,14 +131,14 @@ include("cmake/PluginConfigure.cmake")
 #
 
 SET(SRC_DR
-        src/DR_pi.h
-        src/DR_pi.cpp
+        src/Burton_pi.h
+        src/Burton_pi.cpp
         src/icons.h
         src/icons.cpp
-	    src/DRgui.h
-	    src/DRgui.cpp
-	    src/DRgui_impl.cpp
-	    src/DRgui_impl.h
+	    src/Burtongui.h
+	    src/Burtongui.cpp
+	    src/Burtongui_impl.cpp
+	    src/Burtongui_impl.h
 	    src/NavFunc.h
 	    src/NavFunc.cpp
 		src/ocpn_plugin.h

@@ -38,8 +38,8 @@
 #include <wx/fileconf.h>
 
 #include "ocpn_plugin.h" //Required for OCPN plugin functions
-#include "DRgui_impl.h"
-#include "DRgui.h"
+#include "Burtongui_impl.h"
+#include "Burtongui.h"
 
 #include "version.h"
 
@@ -51,11 +51,11 @@
 
 class Dlg;
 
-class DR_pi : public opencpn_plugin_116
+class Burton_pi : public opencpn_plugin_116
 {
 public:
-      DR_pi(void *ppimgr);
-	   ~DR_pi(void);
+      Burton_pi(void *ppimgr);
+	   ~Burton_pi(void);
 
 //    The required PlugIn Methods
       int Init(void);

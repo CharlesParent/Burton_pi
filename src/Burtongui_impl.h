@@ -33,8 +33,8 @@
 #endif
 
 
-#include "DRgui.h"
-#include "DR_pi.h"
+#include "Burtongui.h"
+#include "Burton_pi.h"
 
 #include "NavFunc.h"
 #include "tinyxml.h"
@@ -44,17 +44,17 @@
 
 using namespace std;
 
-class DR_pi;
+class Burton_pi;
 class Position;
 
 class Dlg : public m_Dialog
 {
 public:
-	Dlg(wxWindow *parent, DR_pi *ppi);
+	Dlg(wxWindow *parent, Burton_pi *ppi);
 	~Dlg();
         
 	wxWindow *pParent;
-	DR_pi *pPlugIn;
+	Burton_pi *pPlugIn;
 
 	
 	

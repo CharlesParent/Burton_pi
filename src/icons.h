@@ -9,7 +9,7 @@
 
 extern void initialize_images(void);
 
-extern wxBitmap *_img_DR_pi;
+extern wxBitmap *_img_Burton_pi;
 extern wxBitmap *_img_DR;
 
 #ifdef DR_USE_SVG
